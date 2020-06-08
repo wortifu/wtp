@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <title id="title">fokres - login form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="theme-color" content="#3B5998" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+  
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+      < !--
+        function doLogin() {
+          document.sendin.username.value = document.login.username.value;
+          document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+          document.sendin.submit();
+          return false;
+        }
+      //-->
+    </script>
+    $(endif)
+
+<div class="container">
+    <div class="up"><h1>fokres.network</h1>
+        <img src="logo.png"> 
+    </div>
+    $(if error)<div class="error">$(error)</div>$(endif)
+        <form class="input" name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="text" onkeyup="change()" id="users" name="username" placeholder="masukkan kode voucher">
+            <input type="hidden" id="copytxt" name="password" >
+            <button class="btn" type="submit">LOGIN</button>
+        </form>
+
+    
+    
+
+    <div class="paket">
+
+        <span>2 JAM = 2.000</span>
+        <span>12 JAM = 5.000</span>
+
+    </div>
+    <h5>gunakan internet seperlunya, jaga kesehatan dan kebersihan</h5>
+</div>
+<script type="text/javascript">
+    < !--
+    document.login.username.focus();
+      //-->
+</script>
+<script type="text/javascript">
+  function change() {
+    var src = document.getElementById('users');
+    var dest = document.getElementById('copytxt');
+    dest.value = src.value;
+  }
+</script>
+</body>
